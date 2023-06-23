@@ -68,6 +68,7 @@ export default function ChatDrawer({ uniqueIdRef, windowWidth, chatOpen, setChat
   const [chatMessage, setChatMessage] = useState("");
   const [chatMessagges, setChatMessagges] = useState([]);
   const prevId = useRef();
+  const dateTime = new Date();
 
   useEffect(() => {
     //since the user id of the user changes when he shares the screen, we  also change the
@@ -228,7 +229,7 @@ export default function ChatDrawer({ uniqueIdRef, windowWidth, chatOpen, setChat
                     <ShowChatMessage message={chatMssg.message} />
                   </Typography>
                   <Box style={{ color: "lightgrey", textAlign: chatMssg.from.userId !== myId ? "left" : "right" }}>
-                    {chatMssg.dateTime.getHours() + ":" + chatMssg.dateTime.getMinutes() + "," + dayIs[chatMssg.dateTime.getDay()]}
+                    {dateTime.getHours() + ":" + dateTime.getMinutes() + "," + dayIs[dateTime.getDay()]}
                   </Box>
                 </Box>
               </Box>
