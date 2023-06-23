@@ -11,7 +11,7 @@ import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
 import * as yup from 'yup'
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-
+import { toast } from "react-toastify";
 const userSchemaValidation = yup.object({
   email: yup.string().required("Please fill in your Email"),
 })
@@ -31,11 +31,11 @@ export function Forgot() {
       const data = await response.json();
       console.log(data);
       history.push("/login")
-
+      toast("link send your gmail")
 
     } catch (error) {
       console.log(error)
-
+      toast("error")
     }
   }
   const { values, handleChange, handleSubmit, handleBlur, errors, touched } = useFormik({

@@ -12,7 +12,7 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
 import * as yup from 'yup'
-
+import { toast } from "react-toastify";
 
 
 const userSchemaValidation = yup.object({
@@ -41,13 +41,14 @@ export function Signup() {
       console.log(data)
       if(data.data==="true"){
         history.push("/login")
+        toast("User Data Added")
       }
        
        
       
     } catch (error) {
       console.log(error)
-     
+      toast(error)
     }
   }
   const { values, handleChange, handleSubmit, handleBlur, errors, touched } = useFormik({

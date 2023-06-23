@@ -11,7 +11,8 @@ import {
     import { useHistory, useParams } from "react-router-dom";
     import * as yup from 'yup'
     import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-    
+    import { toast } from "react-toastify";
+
     const userSchemaValidation = yup.object({
         password: yup.string().required("Please fill in your password"),
     })
@@ -31,13 +32,14 @@ export function Reset() {
             })
         
             const data = await response.json();
-            sessionStorage.setItem('token',token)
+            sessionStorage.setItem('token',token)        
+            toast("password changed")
             history.push("/login")
 
 
         } catch (error) {
             console.log(error)
-
+            toast("error")
         }
     }
     const { values, handleChange, handleSubmit, handleBlur, errors, touched } = useFormik({

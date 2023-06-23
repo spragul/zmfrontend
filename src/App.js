@@ -15,6 +15,9 @@ import { Signup } from "./pages/signup";
 import { Forgot } from "./pages/forgotpassword";
 import { Reset } from "./pages/resetpassword";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const mainurl = "https://zoom-metting-backend.onrender.com"
 
 export default function App() {
@@ -23,7 +26,7 @@ export default function App() {
       <LoginProvider>
         <Router>
           <Switch>
-          <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Home} />
             <ProtectedRoute path="/join" component={VideoCallArea} />
             <Route path="/invite" component={MeetingDetails} />
             <Route path="/waitingroom">
@@ -32,19 +35,29 @@ export default function App() {
             <Route path="/signinfirst" component={SignInFirst} />
             <Route path="/mymeetings" component={MyMeetings} />
             <Route path="/login">
-              <Login/>
+              <Login />
             </Route>
             <Route path="/signup">
-              <Signup/>
+              <Signup />
             </Route>
             <Route path="/forgotpassword">
-              <Forgot/>
+              <Forgot />
             </Route>
             <Route path="/resetpassword/:id/:token">
-              <Reset/>
+              <Reset />
             </Route>
           </Switch>
         </Router>
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          closeOnClick
+          pauseOnFocusLoss
+          pauseOnHover
+          theme="light"
+        />
+        <ToastContainer />
+
       </LoginProvider>
     </SocketProvider>
   );

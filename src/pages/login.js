@@ -10,7 +10,7 @@ import {
 }
 from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-
+import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
 import * as yup from 'yup';
@@ -40,13 +40,17 @@ export function Login() {
       console.log(data);
        sessionStorage.setItem('token',data.token)
       sessionStorage.setItem('value',data.value)
+      toast("User login successful")
         history.push("/mymeetings")
 
       }else{
         console.log("invalide userId password")
+        toast("invalide userId password")
       }
     } catch (error) {
       console.log(error)
+      toast("error")
+
     }
   }
   const { values, handleChange, handleSubmit, handleBlur, errors, touched } = useFormik({
