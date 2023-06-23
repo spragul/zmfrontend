@@ -48,7 +48,6 @@ import { useLogin } from "../../utils/LoginProvider";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { mainurl } from "../../App";
 import { useHistory } from "react-router-dom";
-;
 
 const useStyles = makeStyles({
   chatTextFieldPc: {
@@ -299,13 +298,8 @@ export default function MyMeetings() {
       return <Redirect to={{ pathname: redirectTo.to, state: { from: "/", name: meetingName, creator: true, allowAnyoneToStart: allowAnyoneToStart } }} />;
     }
   }
-  // const dialogProps={openDialog,setOpenDialog,createInstantMeeting,createMeetingForLater,}
+ 
   function handleLogOut() {
-    // axios.get(`${mainurl}/logout`).then((response) => {
-    //   setImgUrl(null);
-    //   setIsLoggedIn(false);
-    //   sessionStorage.clear()
-    // });
     sessionStorage.clear();
     history.push("/")
   }
@@ -380,9 +374,6 @@ export default function MyMeetings() {
             <Grid item xs={11} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
               <Typography variant="h6">Create A New Metting</Typography>
             </Grid>
-            {/* <Grid item xs={1} style={{ textAlign: "right" }}>
-              
-            </Grid> */}
           </Grid>
         </DialogTitle>
         <DialogContent style={{ overflow: "hidden" }}>

@@ -56,13 +56,6 @@ export default function Home() {
   const profileIconRef = useRef();
   let valueId = sessionStorage.getItem('value');
 
-function getid(){
-
-}
-
-  useEffect(() => {
-    getid()
-  }, [])
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -102,11 +95,9 @@ function getid(){
 
   //requests the server to logout the person
   function handleLogOut() {
-    // axios.get("http://localhost:5000/logout").then((response) => {
-    //   setImgUrl(null);
-    //   setIsLoggedIn(false);
+ 
       sessionStorage.clear();
-   // });
+      history.push("/")
   }
 
   //requests the server to create a new meeting for the client
@@ -146,10 +137,7 @@ function getid(){
       setinputLink("");
     }
   }
-  //open mettings
-  function  openmeet(){
-    history.push("/mymeetings")
-  }
+ 
 
   //this is the link to the meeting, the user is redirected to it, when he creates the meeting
   if (link) {
@@ -171,14 +159,7 @@ function getid(){
               Zoom
             </Typography>
           </Box>
-            <Button
-              onClick={() => {
-                openmeet()
-              }}
-              color="inherit"
-            >
-              All Metting
-            </Button>
+
           {isLoggedIn && imgUrl ? (
             <>
               <IconButton
