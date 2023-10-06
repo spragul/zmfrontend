@@ -13,6 +13,8 @@ import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
 import * as yup from 'yup'
 import { toast } from "react-toastify";
+import { mainurl } from '../App';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 
 
 const userSchemaValidation = yup.object({
@@ -30,7 +32,7 @@ export function Signup() {
   const sign = async ({ newuser }) => {
     console.log(newuser);
     try {
-      const response = await fetch("https://zoom-metting-backend.onrender.com/signup", {
+      const response = await fetch(`${mainurl}/signup`, {
         method: "POST",
         body: JSON.stringify(newuser),
         headers: {
@@ -139,7 +141,7 @@ export function Signup() {
               </form>
               <hr></hr>
               <div>
-                <a href="/login">Already have an account? Login!</a>
+                <Link to="/login">Already have an account? Login!</Link>
               </div>
             </MDBCardBody>
           </MDBCard>

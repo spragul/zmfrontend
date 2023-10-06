@@ -14,6 +14,8 @@ import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
 import * as yup from 'yup';
+import { mainurl } from '../App';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 
 
 
@@ -28,7 +30,7 @@ export function Login() {
   const history =useHistory();
   const log = async ({ loginuser }) => {
     try {
-      const response = await fetch("https://zoom-metting-backend.onrender.com/login", {
+      const response = await fetch(`${mainurl}/login`, {
         method: "POST",
         body: JSON.stringify(loginuser),
         headers: {
@@ -105,7 +107,7 @@ export function Login() {
               {touched.password && errors.password ? <p style={{ color: "crimson" }}>{errors.password}</p> : ""}
           
               <div>
-               <p className="mb-0"><a style={{color:'white'}} href="/forgotpassword">Forgot password?</a></p>
+               <p className="mb-0"><Link to="/forgotpassword" style={{color:'white'}}>Forgot password?</Link></p>
                </div>
               <MDBBtn 
               outline 
@@ -121,8 +123,7 @@ export function Login() {
 
 
               <div>
-                <p className="mb-0">Don't have an account? <a href="/signup" class="text-white-50 fw-bold">Sign Up</a></p>
-
+                <p className="mb-0">Don't have an account? <Link to="/signup" class="text-white-50 fw-bold">Sign Up</Link></p>
               </div>
             </MDBCardBody>
           </MDBCard>

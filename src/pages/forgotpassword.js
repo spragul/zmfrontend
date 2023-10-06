@@ -12,6 +12,8 @@ import { useHistory } from "react-router-dom";
 import * as yup from 'yup'
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import { toast } from "react-toastify";
+import { mainurl } from '../App';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 const userSchemaValidation = yup.object({
   email: yup.string().required("Please fill in your Email"),
 })
@@ -19,9 +21,10 @@ const userSchemaValidation = yup.object({
 
 export function Forgot() {
   const history = useHistory();
+  
   const forgotdata = async ({ forgotmail }) => {
     try {
-      const response = await fetch("https://zoom-metting-backend.onrender.com/forgotpassword", {
+      const response = await fetch(`${mainurl}/forgotpassword`, {
         method: "POST",
         body: JSON.stringify(forgotmail),
         headers: {
@@ -74,7 +77,7 @@ export function Forgot() {
             size='lg'
           >Reset Password link</MDBBtn>
           <div>
-            <a href="/login">Already have an account? Login!</a>
+            <Link to="/login">Already have an account? Login!</Link>
           </div>
           </form>
         </MDBCardBody>

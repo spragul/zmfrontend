@@ -12,6 +12,7 @@ import {
     import * as yup from 'yup'
     import 'mdb-react-ui-kit/dist/css/mdb.min.css';
     import { toast } from "react-toastify";
+import { mainurl } from '../App';
 
     const userSchemaValidation = yup.object({
         password: yup.string().required("Please fill in your password"),
@@ -23,7 +24,7 @@ export function Reset() {
     console.log(id,token);
     const restdata = async ({ newpassword }) => {
         try {
-            const response = await fetch(`https://zoom-metting-backend.onrender.com/resetpassword/${id}/${token}`, {
+            const response = await fetch(`${mainurl}resetpassword/${id}/${token}`, {
                 method: "POST",
                 body: JSON.stringify(newpassword),
                 headers: {
