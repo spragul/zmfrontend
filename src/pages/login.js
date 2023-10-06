@@ -57,8 +57,8 @@ export function Login() {
   }
   const { values, handleChange, handleSubmit, handleBlur, errors, touched } = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: 'user123@gmail.com',
+      password: 'user1234',
     },
     validationSchema: userSchemaValidation,
     onSubmit: (loginuser) => {
